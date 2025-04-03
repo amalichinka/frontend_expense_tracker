@@ -1,0 +1,18 @@
+.sorting-controls {
+    margin: 20px 0;
+}
+
+.sorting-controls button {
+    background-color: #4e3629;
+    color: white;
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.sorting-controls button:hover {
+    background-color: #3c2c1e;
+}

@@ -1,0 +1,16 @@
+.goal-tracker {
+    margin-top: 20px;
+}
+
+.progress-bar {
+    height: 20px;
+    background-color: #4e3629;
+    border-radius: 4px;
+    transition: width 0.3s;
+}
+
+.goal-tracker p {
+    font-size: 1rem;
+    margin-top: 5px;
+    color: #f1e0c6;
+}
