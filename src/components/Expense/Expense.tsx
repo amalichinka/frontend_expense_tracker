@@ -1,3 +1,6 @@
+import React from "react";
+import { useAppDispatch } from "../../store/hooks";
+import { deleteExpense } from "../../slices/expensesSlice";
 import "../Expense/Expense.css";
 
 interface ExpenseProps {
@@ -5,15 +8,20 @@ interface ExpenseProps {
     title: string;
     amount: number;
     category: string;
-    onDelete: (id: number) => void;
 }
 
-const Expense = ({ id, title, amount, category, onDelete }: ExpenseProps) => {
+const Expense: React.FC<ExpenseProps> = ({ id, title, amount, category }) => {
+    const dispatch = useAppDispatch();
+
+    const handleDelete = () => {
+        dispatch(deleteExpense(id));
+    };
+
     return (
         <div className="expense">
             <span>{category}: {title}</span>
             <span>{amount} ₽</span>
-            <button onClick={() => onDelete(id)}>Удалить</button>
+            <button onClick={handleDelete}>Удалить</button>
         </div>
     );
 };

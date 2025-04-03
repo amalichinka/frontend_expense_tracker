@@ -1,11 +1,12 @@
 import "../GoalTracker/GoalTracker.css";
+import { useAppSelector } from "../../store/hooks";
 
 interface GoalTrackerProps {
-    expenses: { amount: number }[];
     goal: number;
 }
 
-const GoalTracker = ({ expenses, goal }: GoalTrackerProps) => {
+const GoalTracker = ({ goal }: GoalTrackerProps) => {
+    const expenses = useAppSelector((state) => state.expenses.items);
     const total = expenses.reduce((sum, expense) => sum + expense.amount, 0);
     const percentage = Math.min((total / goal) * 100, 100);
 

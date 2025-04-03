@@ -1,11 +1,10 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import { useAppDispatch } from "../../store/hooks";
+import { addExpense } from "../../slices/expensesSlice";
 import "../ExpenseForm/ExpenseForm.css";
 
-interface ExpenseFormProps {
-    onAddExpense: (title: string, amount: number, category: string) => void;
-}
-
-const ExpenseForm = ({ onAddExpense }: ExpenseFormProps) => {
+const ExpenseForm = () => {
+    const dispatch = useAppDispatch();
     const [title, setTitle] = useState("");
     const [amount, setAmount] = useState("");
     const [category, setCategory] = useState("Кафе и Рестораны");
@@ -13,7 +12,8 @@ const ExpenseForm = ({ onAddExpense }: ExpenseFormProps) => {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (!title || !amount || parseFloat(amount) <= 0) return;
-        onAddExpense(title, parseFloat(amount), category);
+
+        dispatch(addExpense({ title, amount: parseFloat(amount), category }));
         setTitle("");
         setAmount("");
     };
