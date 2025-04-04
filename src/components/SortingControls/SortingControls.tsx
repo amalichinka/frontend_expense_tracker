@@ -1,14 +1,18 @@
+import { useAppDispatch } from "../../store/hooks";
+import { sortExpenses } from "../../slices/expensesSlice";
 import "../SortingControls/SortingControls.css";
 
-interface SortingControlsProps {
-    onSort: (order: "asc" | "desc") => void;
-}
+const SortingControls = () => {
+    const dispatch = useAppDispatch();
 
-const SortingControls = ({ onSort }: SortingControlsProps) => {
+    const handleSort = (order: "asc" | "desc") => {
+        dispatch(sortExpenses(order));
+    };
+
     return (
         <div className="sorting-controls">
-            <button onClick={() => onSort("asc")}>Сортировать ↑</button>
-            <button onClick={() => onSort("desc")}>Сортировать ↓</button>
+            <button onClick={() => handleSort("asc")}>Сортировать ↑</button>
+            <button onClick={() => handleSort("desc")}>Сортировать ↓</button>
         </div>
     );
 };
